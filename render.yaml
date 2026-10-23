@@ -5,7 +5,7 @@ services:
     dockerfilePath: ./Dockerfile
     healthCheckPath: /
     autoDeploy: true
-    plan: free              # free to try; if it runs out of memory, switch to a paid plan (e.g. standard, 2 GB)
+    plan: free # free to try; if it runs out of memory, switch to a paid plan (e.g. standard, 2 GB)
     envVars:
       - key: GROQ_API_KEY
         sync: false
@@ -19,6 +19,14 @@ services:
         sync: false
       - key: PORTKEY_API_KEY
         sync: false
+      # Enter these in the Render dashboard (nothing is hard-coded here):
+      #   USE_GATEWAY       = false  (call Groq directly, no PORTKEY_API_KEY needed) or true (use Portkey)
+      #   DIRECT_GROQ_MODEL = a Groq model your key can use, e.g. openai/gpt-oss-120b (only when USE_GATEWAY=false)
+      # If you set USE_GATEWAY=true, also add a PORTKEY_API_KEY variable in the dashboard.
+      - key: USE_GATEWAY
+        sync: false
+      - key: DIRECT_GROQ_MODEL
+        sync: false
       - key: LANGSMITH_TRACING
         value: "false"
 
@@ -29,7 +37,7 @@ services:
     autoDeploy: true
     plan: free
     envVars:
-      - key: BACKEND_URL        # public URL of rag-backend, set after it is deployed
+      - key: BACKEND_URL # public URL of rag-backend, set after it is deployed
         sync: false
       - key: LOGFIRE_TOKEN
         sync: false
