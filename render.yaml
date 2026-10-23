@@ -5,7 +5,7 @@ services:
     dockerfilePath: ./Dockerfile
     healthCheckPath: /
     autoDeploy: true
-    plan: standard          # pick a plan with at least 2 GB RAM, see DEPLOYMENT.md section 10
+    plan: free              # free to try; if it runs out of memory, switch to a paid plan (e.g. standard, 2 GB)
     envVars:
       - key: GROQ_API_KEY
         sync: false
@@ -27,6 +27,7 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile.ui
     autoDeploy: true
+    plan: free
     envVars:
       - key: BACKEND_URL        # public URL of rag-backend, set after it is deployed
         sync: false
