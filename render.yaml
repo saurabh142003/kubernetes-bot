@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: rag-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    plan: standard          # pick a plan with at least 2 GB RAM, see DEPLOYMENT.md section 10
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: JINA_API_KEY
+        sync: false
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: LOGFIRE_TOKEN
+        sync: false
+      - key: PORTKEY_API_KEY
+        sync: false
+      - key: LANGSMITH_TRACING
+        value: "false"
+
+  - type: web
+    name: rag-ui
+    runtime: docker
+    dockerfilePath: ./Dockerfile.ui
+    autoDeploy: true
+    envVars:
+      - key: BACKEND_URL        # public URL of rag-backend, set after it is deployed
+        sync: false
+      - key: LOGFIRE_TOKEN
+        sync: false

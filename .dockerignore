@@ -1,0 +1,20 @@
+# Secrets and local state
+.env
+.env.*
+.logfire/
+.git/
+.claude/
+.vscode/
+.idea/
+
+# Environments and caches
+.venv/
+.venv_old314/
+__pycache__/
+*.py[cod]
+.deepeval/
+
+# Not needed inside the images
+DATA/
+processed_data/
+*.md
