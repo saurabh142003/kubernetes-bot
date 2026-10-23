@@ -1,0 +1,31 @@
+# Secrets: NEVER commit these
+.env
+.env.*
+!.env.example
+.logfire/
+
+# Virtual environments
+.venv/
+.venv_old314/
+venv/
+env/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Local state / caches
+.deepeval/
+processed_data/
+.flashrank/
+*.log
+
+# Editors / OS
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
