@@ -36,6 +36,15 @@ def home():
     return {"message": "Enterprise LangGraph RAG API is live."}
 
 
+@app.get("/health")
+def health():
+    """
+    Lightweight liveness check for monitoring. Makes no LLM, Qdrant or Jina calls,
+    so it is fast and free to poll.
+    """
+    return {"status": "ok"}
+
+
 @app.get("/graph")
 def get_graph_image():
     """
