@@ -36,13 +36,13 @@ def home():
     return {"message": "Enterprise LangGraph RAG API is live."}
 
 
-@app.get("/health")
+@app.head("/health")
 def health():
     """
-    Lightweight liveness check for monitoring. Makes no LLM, Qdrant or Jina calls,
-    so it is fast and free to poll.
+    Lightweight liveness check for monitoring (HEAD request, empty body, HTTP 200).
+    Makes no LLM, Qdrant or Jina calls, so it is fast and free to poll.
     """
-    return {"status": "ok"}
+    return Response(status_code=200)
 
 
 @app.get("/graph")
